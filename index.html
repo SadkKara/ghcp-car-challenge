@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta
+			http-equiv="Content-Security-Policy"
+			content="default-src 'self'; connect-src 'self' https://api.open-meteo.com; img-src 'self' data:; style-src 'self'; script-src 'self'; base-uri 'self'; form-action 'none'; frame-ancestors 'none'"
+		/>
+		<meta name="referrer" content="no-referrer" />
+		<meta name="description" content="Météo des stations de ski autour de Genève : Chamonix, Verbier et Zermatt." />
+		<title>Météo Ski - Région Genève</title>
+		<link rel="stylesheet" href="styles.css" />
+		<script src="script.js" defer></script>
+	</head>
+	<body>
+		<header class="app-header">
+			<h1>Météo Ski - Région Genève</h1>
+			<p>Conditions en direct pour Chamonix, Verbier et Zermatt</p>
+		</header>
+
+		<main class="app-main" aria-live="polite">
+			<section class="toolbar" aria-label="Actions">
+				<button id="refreshButton" type="button" class="refresh-btn">Actualiser</button>
+				<p id="statusMessage" class="status-message" role="status">Chargement des données météo…</p>
+			</section>
+
+			<section id="resortGrid" class="resort-grid" aria-label="Stations de ski"></section>
+		</main>
+	</body>
+</html>
