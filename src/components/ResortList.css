@@ -1,0 +1,65 @@
+.resort-list {
+  padding: 1rem;
+  overflow-y: auto;
+  height: 100%;
+}
+
+.resort-list h2 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #e8f4fd;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.country-group {
+  margin-bottom: 1rem;
+}
+
+.country-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 0.4rem;
+  padding: 0 0.25rem;
+}
+
+.resort-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  margin-bottom: 0.25rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid transparent;
+  border-radius: 8px;
+  color: #e8f4fd;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.2s, border-color 0.2s;
+  font-size: 0.85rem;
+}
+
+.resort-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.resort-item.selected {
+  background: rgba(100, 181, 246, 0.2);
+  border-color: rgba(100, 181, 246, 0.5);
+}
+
+.resort-name {
+  font-weight: 500;
+}
+
+.resort-elevation {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.6);
+  white-space: nowrap;
+  margin-left: 0.5rem;
+}
