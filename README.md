@@ -1,71 +1,71 @@
-# Geneva Ski Weather App
+# Application Météo Ski - Région de Genève
 
-Geneva bölgesine yakın 3 kayak merkezi için (Chamonix, Verbier, Zermatt) canlı hava durumu uygulaması.
+Application météo en direct pour 3 stations de ski proches de Genève (Chamonix, Verbier, Zermatt).
 
-## Özellikler
+## Fonctionnalités
 
-- Responsive kart tabanlı grid arayüz
-- Open-Meteo API üzerinden canlı veri çekme
-- Her merkez için hava durumu ikonu ve koşul bilgisi
-- Sıcaklık, rüzgar, günlük kar yağışı, mevcut kar yüksekliği
-- Mobil uyumlu tasarım
-- Temel web güvenliği uygulamaları (CSP, güvenli DOM güncelleme, istek zaman aşımı)
+- Interface responsive en grille de cartes
+- Récupération des données en direct via l’API Open-Meteo
+- Icône météo et état des conditions pour chaque station
+- Température, vent, chute de neige du jour, hauteur de neige actuelle
+- Design compatible mobile
+- Bonnes pratiques de sécurité web (CSP, mise à jour DOM sécurisée, timeout des requêtes)
 
-## Teknolojiler
+## Technologies
 
 - HTML5
 - CSS3
-- Vanilla JavaScript (ES6+)
-- Open-Meteo API
+- JavaScript Vanilla (ES6+)
+- API Open-Meteo
 
-## Projeyi Çalıştırma
+## Lancer le projet
 
-Bu proje statik dosyalardan oluşur. CSP nedeniyle doğrudan dosya açmak yerine yerel bir HTTP sunucu ile çalıştırmanız önerilir.
+Ce projet est composé de fichiers statiques. En raison de la CSP, il est recommandé d’utiliser un serveur HTTP local plutôt que d’ouvrir le fichier directement.
 
-### Seçenek 1: Python ile
+### Option 1 : avec Python
 
 ```bash
 python3 -m http.server 5500
 ```
 
-Sonra tarayıcıda açın:
+Puis ouvrir dans le navigateur :
 
 ```text
 http://localhost:5500
 ```
 
-### Seçenek 2: VS Code Live Server
+### Option 2 : avec VS Code Live Server
 
-`index.html` dosyasını açıp **Open with Live Server** ile başlatabilirsiniz.
+Ouvrez le fichier `index.html`, puis lancez **Open with Live Server**.
 
-## Proje Yapısı
+## Structure du projet
 
 ```text
 .
-├── index.html   # Uygulama iskeleti ve güvenlik meta ayarları
-├── styles.css   # Responsive kart ve grid stilleri
-└── script.js    # API çağrıları, veri işleme, kart render etme
+├── index.html   # Structure de l’application et métadonnées de sécurité
+├── styles.css   # Styles responsive (cartes et grille)
+└── script.js    # Appels API, traitement des données et rendu des cartes
 ```
 
-## Veri Kaynağı
+## Source des données
 
-Uygulama aşağıdaki endpoint'i kullanır:
+L’application utilise l’endpoint suivant :
 
 - `https://api.open-meteo.com/v1/forecast`
 
-İstenen alanlar:
+Champs demandés :
 
 - `current`: `temperature_2m`, `weather_code`, `wind_speed_10m`
 - `daily`: `snowfall_sum`
 - `hourly`: `snow_depth`
 
-## Güvenlik Notları
+## Notes de sécurité
 
-- `Content-Security-Policy` ile sadece aynı origin script/style ve Open-Meteo bağlantısı izinli
-- Dinamik içerik `textContent` ile render edilir (XSS riskini azaltır)
-- `fetch` isteklerinde `AbortController` ile zaman aşımı uygulanır
-- API hataları kart bazında güvenli şekilde yönetilir
+- `Content-Security-Policy` limite les ressources aux scripts/styles same-origin et à la connexion Open-Meteo
+- Le contenu dynamique est rendu via `textContent` (réduction du risque XSS)
+- Les requêtes `fetch` utilisent `AbortController` pour gérer les timeouts
+- Les erreurs API sont gérées proprement, station par station
 
-## Geliştirme Notu
+## Note de développement
 
-API yanıtı veya hava kodları zamanla değişebilir. Gerekirse `script.js` içindeki `weatherMap` güncellenebilir.
+La réponse API et les codes météo peuvent évoluer. Si nécessaire, mettez à jour `weatherMap` dans `script.js`.
